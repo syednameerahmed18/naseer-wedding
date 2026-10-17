@@ -151,6 +151,7 @@ function OpeningScreen({ onNext }) {
         </motion.p>
 
         {/* Mobile Heart Button */}
+        {/* Mobile Heart Button */}
         <motion.button
           type="button"
           onClick={onNext}
@@ -158,53 +159,91 @@ function OpeningScreen({ onNext }) {
           initial={{ opacity: 0, y: 8 }}
           animate={{
             opacity: 1,
-            y: [0, -2, 0],
+            y: [0, -3, 0],
             rotate: [0, 0, -2, 2, -2, 2, 0],
           }}
           transition={{
-            opacity: { duration: 0.8, delay: 4 },
+            opacity: { duration: 0.8, delay: 1 },
             y: {
               duration: 2.4,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 1.6,
+              delay: 1,
             },
             rotate: {
               duration: 0.45,
               repeat: Infinity,
-              repeatDelay: 2.5,
+              repeatDelay: 3,
               ease: "easeInOut",
-              delay: 4.8,
+              delay: 4,
             },
           }}
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.94 }}
+          whileHover={{
+            scale: 1.1,
+            filter: "brightness(1.06)",
+          }}
+          whileTap={{ scale: 0.93 }}
           className="
-            relative mt-4 flex h-[64px] w-[100px]
-            shrink-0 items-center justify-center
-            text-[#984D68]
-            focus-visible:outline-2 focus-visible:outline-offset-4
-            focus-visible:outline-[#984D68]
-            sm:h-[72px] sm:w-[110px]
-          "
+    relative mt-4 flex h-[72px] w-[108px]
+    shrink-0 items-center justify-center
+    cursor-pointer
+    drop-shadow-[0_5px_7px_rgba(135,67,91,0.30)]
+    focus-visible:outline-2 focus-visible:outline-offset-4
+    focus-visible:outline-[#984D68]
+    sm:h-[80px] sm:w-[120px]
+  "
         >
           <svg
             viewBox="0 0 120 105"
             className="absolute inset-0 h-full w-full"
-            fill="none"
             aria-hidden="true"
           >
+            <defs>
+              <linearGradient
+                id="heartGradient"
+                x1="0"
+                y1="0"
+                x2="0.8"
+                y2="1"
+                gradientUnits="objectBoundingBox"
+              >
+                <stop offset="0%" stopColor="#FCE0E7" />
+                <stop offset="50%" stopColor="#F4BFD0" />
+                <stop offset="100%" stopColor="#E89BB5" />
+              </linearGradient>
+            </defs>
+
             <path
               d="M60 96 C49 84 8 57 8 32 C8 5 39 2 60 27 C81 2 112 5 112 32 C112 57 71 84 60 96 Z"
-              stroke="currentColor"
-              strokeWidth="2"
+              fill="url(#heartGradient)"
+              stroke="#B75D78"
+              strokeWidth="2.5"
+              strokeLinejoin="round"
+            />
+
+            {/* Subtle highlight for a glossy button effect */}
+            <path
+              d="M25 27 C28 13 43 12 51 22"
+              fill="none"
+              stroke="#FFF0F5"
+              strokeWidth="3"
+              strokeLinecap="round"
+              opacity="0.8"
             />
           </svg>
 
-          <span className="relative font-wedding text-sm sm:text-base">
+          <span
+            className="
+      relative mt-1 font-wedding text-base font-semibold
+      text-[#78334D]
+      drop-shadow-[0_1px_1px_rgba(255,255,255,0.45)]
+      sm:text-lg
+    "
+          >
             Click Me
           </span>
         </motion.button>
+
       </motion.div>
 
       {/* TABLET / DESKTOP LAYOUT - 768px and Wider */}
@@ -424,36 +463,70 @@ function OpeningScreen({ onNext }) {
               delay: 4.8,
             },
           }}
-          whileHover={{ scale: 1.08 }}
+          whileHover={{ scale: 1.08, brightness: 1.05 }}
           whileTap={{ scale: 0.94 }}
           className="
-            relative mt-[-2vh] flex h-[68px] w-[106px]
-            shrink-0 items-center justify-center
-            text-[#984D68]
-            focus-visible:outline-2
-            focus-visible:outline-offset-4
-            focus-visible:outline-[#984D68]
-            md:h-[76px] md:w-[120px]
-            xl:h-[84px] xl:w-[130px]
-          "
+    relative mt-[-2vh] flex h-[68px] w-[106px]
+    shrink-0 items-center justify-center
+    cursor-pointer
+    drop-shadow-[0_5px_7px_rgba(135,67,91,0.30)]
+    focus-visible:outline-2
+    focus-visible:outline-offset-4
+    focus-visible:outline-[#984D68]
+    md:h-[76px] md:w-[120px]
+    xl:h-[84px] xl:w-[130px]
+  "
         >
           <svg
             viewBox="0 0 120 105"
             className="absolute inset-0 h-full w-full"
-            fill="none"
             aria-hidden="true"
           >
+            <defs>
+              <linearGradient
+                id="desktopHeartGradient"
+                x1="0"
+                y1="0"
+                x2="0.8"
+                y2="1"
+                gradientUnits="objectBoundingBox"
+              >
+                <stop offset="0%" stopColor="#FCE0E7" />
+                <stop offset="50%" stopColor="#F4BFD0" />
+                <stop offset="100%" stopColor="#E89BB5" />
+              </linearGradient>
+            </defs>
+
             <path
               d="M60 96 C49 84 8 57 8 32 C8 5 39 2 60 27 C81 2 112 5 112 32 C112 57 71 84 60 96 Z"
-              stroke="currentColor"
-              strokeWidth="2"
+              fill="url(#desktopHeartGradient)"
+              stroke="#B75D78"
+              strokeWidth="2.5"
+              strokeLinejoin="round"
+            />
+
+            <path
+              d="M25 27 C28 13 43 12 51 22"
+              fill="none"
+              stroke="#FFF0F5"
+              strokeWidth="3"
+              strokeLinecap="round"
+              opacity="0.8"
             />
           </svg>
 
-          <span className="relative font-wedding text-sm md:text-base xl:text-lg">
+          <span
+            className="
+      relative mt-1 font-wedding font-semibold
+      text-[#78334D]
+      drop-shadow-[0_1px_1px_rgba(255,255,255,0.45)]
+      text-sm md:text-base xl:text-lg
+    "
+          >
             Click Me
           </span>
         </motion.button>
+
       </motion.div>
     </div>
   );
